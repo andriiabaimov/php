@@ -2,7 +2,7 @@
 
 class CurlRequest
 {
-    private $ch;
+    private $ch, $header, $code;
 
     function __construct($options = array())
     {
