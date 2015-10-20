@@ -7,9 +7,6 @@ class CurlRequest
     function __construct($options = array())
     {
         $this->ch_init();
-        $this->ch_setopt($options);
-        $this->ch_exec();
-        $this->ch_close();
     }
 
     private function ch_init()
@@ -17,18 +14,18 @@ class CurlRequest
         $this->ch = curl_init();
     }
 
-    private function ch_setopt($options = array())
+    public function ch_setopt($option, $value)
     {
-        curl_setopt_array($this->ch, $options);
+        curl_setopt($this->ch, $option, $value);
     }
 
-    private function ch_exec()
+    public function ch_exec()
     {
         $this->header = curl_exec($this->ch);
         $this->code = curl_getinfo($this->ch, CURLINFO_HTTP_CODE);
     }
 
-    private function ch_close()
+    public function ch_close()
     {
         curl_close($this->ch);
     }

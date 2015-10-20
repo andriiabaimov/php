@@ -14,4 +14,9 @@ $options = array(
 );
 
 $test = new CurlRequest($options);
+foreach ($options as $option => $value) {
+    $test->ch_setopt($option, $value);
+}
+$test->ch_exec();
+$test->ch_close();
 echo $test->get_code() . chr(10) . $test->get_header() . chr(10);
